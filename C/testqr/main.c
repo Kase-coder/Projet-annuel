@@ -34,13 +34,14 @@
 
 
 // Function prototypes
-static void doBasicDemo(void);
+static void doBasicDemo(char *);
 static void printQr(const uint8_t qrcode[]);
 
 
 // The main application program.
-int main(void) {
-	doBasicDemo();
+int main(int argc, char **argv) {
+    char * url = argv[1];
+	doBasicDemo(url);
 	return EXIT_SUCCESS;
 }
 
@@ -49,8 +50,8 @@ int main(void) {
 /*---- Demo suite ----*/
 
 // Creates a single QR Code, then prints it to the console.
-static void doBasicDemo(void) {
-	const char *text = "jbuezfjzejkfzek ueu flzegjfchazdk hz fjl ezbyf kaknhfb zejuhf z ehf gbhv huid bnerilthezith bnziv gher iughhj huherjhvgoyrg  !";                // User-supplied text
+static void doBasicDemo(char * sent) {
+	const char *text = sent;                // User-supplied text
 	enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
 
 	// Make and print the QR Code symbol
